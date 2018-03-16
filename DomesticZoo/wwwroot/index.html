@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DomesticZoo</title>
+
+
+    <link href="bootstrap.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="animale.js" type="text/javascript"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <link href="style.css" rel="stylesheet" />
+    <link href="style_anagrafica_animali.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <header>
+            <h1>Domestic Zoo</h1>
+            <h2>Pensione per gatti e cani</h2>
+        </header>
+
+        <main>
+            <div class="panel-group">
+                <div class="panel-width">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                            <h4 class="panel-title" style="cursor: pointer;" onclick="ExpandPanel(this); if (!tabella_creata) { CreateTable(); }">Box</h4>
+                        </div>
+
+                        <div class="panel-body panel-Box">
+
+                            <div id="table-scrollbar">
+                                <table>
+
+                                    <tbody id="box-date">
+
+                                        <tr><td></td></tr>
+                                        <tr id="r1"><td style="text-align:center">Box1</td></tr>
+                                        <tr id="r2"><td>Box2</td></tr>
+                                        <tr id="r3"><td>Box3</td></tr>
+                                        <tr id="r4"><td>Box4</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" style="cursor: pointer;" onclick="ExpandPanel(this);">Animali</h4>
+                        </div>
+                        <div class="panel-body panel-Animals">
+
+                            <section>
+                                <div class="vertical-menu">
+
+                                    <a target="_self" href="anagrafica_animali.html" onclick="Section();  GetDates(this);">Leo</a>
+                                    <a href="anagrafica_animali.html" onclick="Section();GetDates(this);">Pluto</a>
+                                    <a href="anagrafica_animali.html" onclick="Section();GetDates(this);">Rex</a>
+                                    <a href="anagrafica_animali.html" onclick="Section();GetDates(this);">Romeo</a>
+                                    <a href="anagrafica_animali.html" onclick="Section();GetDates(this);">Felix</a>
+                                    <a href="anagrafica_animali.html" onclick="Section();GetDates(this);"> Whiskey</a>
+                                </div>
+
+
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <dialog open>
+
+                <center><h4 class="modal-title">Aggiungi</h4></center>
+
+                <form class="modal-body">
+
+                    <select id="select"></select>
+                    <br />
+                    <button type="button" class="btn btn-primary" value="OK" onclick="InsertAnimal();">OK</button>
+                    <input type="button" name="annulla" value="Annulla" />
+                </form>
+
+            </dialog>
+
+        </main>
+
+
+
+        <script>
+            //Variabili Globali
+            var cella;
+            var situation;
+            var tabella_creata = false;
+
+            function ExpandPanel(expander) {
+                var expander_name = expander.innerHTML;
+                var panel_Box = document.getElementsByClassName("panel-Box")[0];
+                var panel_Animals = document.getElementsByClassName("panel-Animals")[0];
+                var panel_width = document.getElementsByClassName("panel-width")[0];
+
+                if (expander_name == "Box") {
+                    console.log(expander_name);
+                    if (panel_Box.style.display == "none") {
+                        panel_Box.style.display = "block";
+
+                    }
+                    else {
+                        panel_Box.style.display = "none";
+
+                    }
+
+                }
+                if (expander_name == "Animali") {
+                    console.log(expander_name);
+                    if (panel_Animals.style.display == "none") {
+                        panel_Animals.style.display = "block";
+
+                    }
+                    else {
+                        panel_Animals.style.display = "none";
+
+                    }
+                }
+
+            }
+
+            var dog1 = new Dog("Leo", "red", "palla", "2017-04-04", new Owner("Mario", "753753", "Via del Teatro"));
+            var dog2 = new Dog("Pluto", "orange", "frisbee", "2018-03-02", new Owner("Matteo", "534430", "Via Magenta"));
+            var dog3 = new Dog("Rex", "green", "peluche", "2017-08-22", new Owner("Sara", "224702", "Via del Vetro"));
+            var cat1 = new Cat("Romeo", "violet", "osso", "2016-05-02", new Owner("Giovanni", "420202", "Piazza Orlandi"));
+            var cat2 = new Cat("Felix", "yellow", "legnetti", "2018-09-07", new Owner("Alessia", "444100", "Via della Croce"));
+            var cat3 = new Cat("Whiskey", "brown", "campanelli", "2018-03-24", new Owner("Alessandro", "14240", "Via del Quadro "));
+
+            var animals = [dog1, dog2, dog3, cat1, cat2, cat3];
+
+            var cells = [];
+
+            var box1 = new Box();
+            var box2 = new Box();
+            var box3 = new Box();
+            var box4 = new Box();
+
+            var boxes = [box1, box2, box3, box4];
+
+            function GetList() {
+
+                $("option").remove();
+
+                var array;
+
+                var dropdownlist = document.getElementsByTagName("select")[0];
+
+                var options = dropdownlist.getElementsByTagName("option");
+
+
+                array = CreateDropDownList(Get_situation_box());
+
+                /*  var first_div_content = document.getElementById("first_colored_row").innerHTML;
+                  var second_div_content = document.getElementById("second_colored_row").innerHTML;
+                  var third_div_content = document.getElementById("third_colored_row").innerHTML;*/
+
+                //  var div_array = [first_div_content, second_div_content, third_div_content];
+
+                //  div_array.filter(x => x.innerHTML != "");
+
+                for (var i = 0; i < array.length; i++) {
+
+                    //  if (div_array[i] != array[i].name) {
+
+                    var option = document.createElement("option");
+                    option.value = array[i].name;
+                    option.innerHTML = array[i].name;
+                    dropdownlist.appendChild(option);
+
+                    //}
+
+                }
+            }
+            function CreateTable() {
+
+                var days_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                var months = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11];
+                var name_of_months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio"];
+                var seven_days = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
+                var date = new Date();
+                var milliseconds;
+
+                var rows;
+                var cell;
+                var tbody;
+                var cell_counter = 1;
+
+                tbody = document.getElementById("box-date");
+                rows = tbody.getElementsByTagName("tr");
+
+                var first_div;
+                var second_div;
+                var third_div;
+
+
+                var dates = [];
+                var count_days = 0;
+                var j = 0;
+
+                for (var row = 0; row < rows.length; row++) {
+
+                    for (var month = 0; month < 5; month++) {
+
+                        var days = days_months[month];
+
+
+                        for (var day = 0; day < days; day++) {
+
+                            cell = document.createElement("td");
+
+                            first_div = document.createElement("div");
+                            second_div = document.createElement("div");
+                            third_div = document.createElement("div");
+
+
+                            if (row == 0) {
+                                milliseconds = date.setFullYear(2018, months[month], +day + 1);
+                                date = new Date(milliseconds);
+
+                                var year = date.getFullYear();
+                                var month = date.getMonth();
+                                var index = date.getDay();
+                                var nameofday = seven_days[index];
+                                var num_day = +day + 1;
+
+                                var formatted_date = `${year}/${month}/${num_day} `;
+
+                                dates.push(formatted_date);
+                                count_days++;
+                                cell.innerHTML = nameofday + " " + num_day;
+                            }
+                            else {
+
+                                if (j == count_days) {
+                                    j = 0;
+                                }
+
+                                cell.id = "c" + cell_counter;
+
+                                first_div.id = "first_colored_row";
+                                second_div.id = "second_colored_row";
+                                third_div.id = "third_colored_row";
+
+                                first_div.setAttribute("style", "cursor: pointer");
+                                second_div.setAttribute("style", "cursor: pointer");
+                                third_div.setAttribute("style", "cursor: pointer");
+
+                                first_div.setAttribute('date', dates[j]);
+                                second_div.setAttribute('date', dates[j]);
+                                third_div.setAttribute('date', dates[j]);
+
+                                first_div.onclick = function () {
+
+                                    console.log(this);
+                                    CheckBox(this);
+                                    OpenDialog(this);
+                                    GetList();
+
+                                }
+                                second_div.onclick = function () {
+
+                                    console.log(this);
+                                    CheckBox(this);
+                                    OpenDialog(this);
+                                    GetList();
+                                }
+                                third_div.onclick = function () {
+
+                                    console.log(this);
+                                    CheckBox(this);
+                                    OpenDialog(this);
+                                    GetList();
+                                }
+
+                                cell.appendChild(first_div);
+                                cell.appendChild(second_div);
+                                cell.appendChild(third_div);
+
+                                j++;
+
+                                cell_counter++;
+                            }
+
+                            rows[row].appendChild(cell);
+
+                        }
+
+                    }
+
+                }
+                tabella_creata = true;
+            }
+
+            function OpenDialog(cell) {
+                var dialog;
+                console.log(event);
+                dialog = document.getElementsByTagName("dialog")[0];
+                dialog.style.display = "block";
+                SetCell(cell);
+
+            }
+
+            function SetCell(cell) {
+                cella = cell;
+            }
+
+            function GetCell() {
+                return cella;
+            }
+
+            function GetNumberofRow(cell) {
+                return $(cell).closest("tr").index();
+            }
+
+            function CreateDropDownList(situation_box) {
+
+                var array = [];
+
+                console.log(situation_box.date);
+
+                if (situation_box.remaining_space == 3) {
+
+                    array = animals;
+
+                }
+
+                else {
+                    console.log(situation_box.array_animals.length);
+                    var animal_weight = situation_box.array_animals[0].weight;
+
+                    var new_array = animals.filter(x => x.weight == animal_weight);
+
+                    array = new_array;
+                }
+
+                return array;
+            }
+
+
+            function CheckBox(cell) {
+                console.log(GetNumberofRow(cell));
+                var num_box = GetNumberofRow(cell);
+                num_box--;
+
+                var day_cell = cell.getAttribute("date");
+                console.log(day_cell);
+
+                var situation_box = boxes[num_box].get_Box_Date(day_cell);
+
+                Set_situation_box(situation_box);
+
+            }
+
+            function Set_situation_box(situation_box) {
+                situation = situation_box;
+
+            }
+            function Get_situation_box() {
+                return situation;
+            }
+
+
+            function InsertAnimal() {
+
+                dialog = document.getElementsByTagName("dialog")[0];
+
+                dialog.style.display = "none";
+
+                CheckBoxCapacity();
+
+            }
+
+            function CheckBoxCapacity() {
+                var paint;
+                var cell_day;
+                var obj_cell;
+
+                var v = document.getElementsByTagName("select")[0];
+
+
+                for (var i = 0; i < animals.length; i++) {
+
+                    if (v.value == animals[i].name) {
+
+                        var index_box = GetNumberofRow(GetCell());
+                        index_box--;
+                        boxes[index_box].addAnimal(animals[i], Get_situation_box());
+
+                        break;
+                    }
+
+                }
+            }
+
+        </script>
+
+</body>
+</html>

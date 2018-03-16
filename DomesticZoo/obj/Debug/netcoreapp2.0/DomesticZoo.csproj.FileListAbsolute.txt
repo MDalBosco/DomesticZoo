@@ -1,0 +1,11 @@
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\bin\Debug\netcoreapp2.0\DomesticZoo.deps.json
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\bin\Debug\netcoreapp2.0\DomesticZoo.runtimeconfig.json
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\bin\Debug\netcoreapp2.0\DomesticZoo.runtimeconfig.dev.json
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\bin\Debug\netcoreapp2.0\DomesticZoo.dll
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\bin\Debug\netcoreapp2.0\DomesticZoo.pdb
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.csprojResolveAssemblyReference.cache
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.csproj.CoreCompileInputs.cache
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.AssemblyInfoInputs.cache
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.AssemblyInfo.cs
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.dll
+C:\Users\Michele\Source\Repos\Studenti\DomesticZoo\obj\Debug\netcoreapp2.0\DomesticZoo.pdb

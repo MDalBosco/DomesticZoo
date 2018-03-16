@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <link href="style.css" rel="stylesheet" />
+    <link href="style_anagrafica_animali.css" rel="stylesheet" />
+</head>
+<body>
+
+    <main>
+
+        <section id="dati_animale">
+
+            <form>
+                <div class="form-group">
+
+                    Nome:            <input type="text" name="name" value="" id="a_name" />
+                    Giocattoli:      <input type="text" name="name" value="" id="toys" />
+                    Data_Nascita     <input type="text" name="name" value="" id="birth" />
+
+                </div>
+            </form>
+
+
+        </section>
+
+
+        <section id="dati_padrone">
+
+            <form>
+
+                <center><h2>Padrone</h2></center>
+
+                <div class="form-group">
+
+                    Nome:          <input type="text" name="name" value="" id="owner_name" />
+                    Indirizzo:     <input type="text" name="name" value="" id="address" />
+                    Telefono:      <input type="text" name="name" value="" id="telephone" />
+
+
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+
+        function Section() {
+            console.log("ciao");
+            var animal_section = document.getElementsById("dati_animale");
+            var owner_section = document.getElementsById("dati_padrone");
+
+            if (animal_section.style.display == "none") {
+                animal_section.style.display = "block";
+
+            }
+            else {
+                section.style.display = "none";
+
+            }
+
+            if (owner_section.style.display == "none") {
+                owner_section.style.display = "block";
+
+            }
+            else {
+                owner_section.style.display = "none";
+
+            }
+
+        }
+
+        function GetDates(select) {
+
+            var name_animal = select.InnerHTML;
+
+            var a_animal = animals.filter(x => x.name == name_animal);
+
+            document.getElementById("a_name").innerHTML = a_animal.name;
+            document.getElementById("toys").innerHTML = a_animal.toys;
+            document.getElementById("birth").innerHTML = a_animal.birth;
+
+            document.getElementById("owner_name").innerHTML = a_animal.owner.name;
+            document.getElementById("address").innerHTML = a_animal.address;
+            document.getElementById("telephone").innerHTML = a_animal.telephone;
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿#container {
+    margin: 0 auto;
+}
+
+h1 {
+    color: aquamarine;
+    font-size: 50pt;
+    text-align: center;
+}
+
+h2 {
+    color: darkorange;
+    font-size: 25pt;
+    text-align: center;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+}
+
+main {
+    margin-top: 80px;
+}
+
+dialog {
+    position: relative;
+    width: 300px;
+    margin-left: 400px;
+    height: 200px;
+    border: none;
+    margin-top: -600px;
+    display: none;
+    background-color: WindowFrame;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-width {
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: lightgreen;
+    border-color: #ddd;
+}
+
+.panel-body {
+    display: none;
+}
+
+.panel-Box {
+    background-color: deepskyblue;
+}
+
+.panel-Animals {
+    background-color: white;
+}
+
+#table-scrollbar {
+    overflow-x: auto;
+}
+
+table {
+    table-layout: fixed;
+    background-color: white;
+    margin-bottom: 0%;
+}
+
+table, td {
+    border: 1px solid;
+    height: 60px;
+    width: 100px;
+    text-align: center;
+    padding-top: 0px;
+}
+
+
+#first_colored_row {
+    background-color: white;
+    padding-top: 20px;
+    margin-top: 0px;
+    margin-bottom: 0%;
+    color: white;
+}
+
+#second_colored_row {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 0%;
+    color: black;
+    text-align: center;
+}
+
+#third_colored_row {
+    background-color: white;
+    padding: 10px;
+    color: black;
+    text-align: center;
+}
